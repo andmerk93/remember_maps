@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+remember_maps/remember_maps/keys.py
+remember_maps/static/bootstrap.min.css
