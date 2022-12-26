@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 remember_maps/remember_maps/keys.py
-remember_maps/static/bootstrap.min.css
+remember_maps/static/
+remember_maps/staticfiles/

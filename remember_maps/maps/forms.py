@@ -4,19 +4,20 @@ from django.contrib.auth import get_user_model
 
 from .models import Post
 
-
 User = get_user_model()
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('text',)
+        fields = ('point', 'text',)
         labels = {
-            'text': 'Текст поста',
+            'point': 'Место на карте',
+            'text': 'Текст записи',
         }
         help_texts = {
-            'text': 'Текст нового поста',
+            'text': 'Поделись впечатлением',
+            'point': 'Поставь точку на карте',
         }
 
 

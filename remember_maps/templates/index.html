@@ -8,7 +8,8 @@
     <div class="container py-5">
       <h1>Последние записи</h1>
       {% for post in posts %}
-        Опубликовано: {{ post.pub_date|date:"d E Y" }}
+        Добавлено: {{ post.pub_date|date:"H:i, d E Y" }} 
+        <p><img src="https://static-maps.yandex.ru/1.x/?size=650,400&z=13&l=map,skl&ll={{ post.lonlatstr }}&pt={{ post.lonlatstr }},org"></p>
         <p>{{ post.text|linebreaksbr }}</p>
         {% if not forloop.last %}<hr>{% endif %}
       {% endfor %}

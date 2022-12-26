@@ -31,6 +31,8 @@ def add_post(request):
         return render(request, 'add_post.html', {'form': form})
     post = form.save(commit=False)
     post.author = request.user
+    splitted = str(post.point).split(';')
+    post.lonlatstr = f'{splitted[1]},{splitted[0]}'
     post.save()
     return redirect('index')
 
