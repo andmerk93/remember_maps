@@ -11,6 +11,7 @@ from maps import views
 handler404 = 'maps.views.page_not_found'
 
 urlpatterns = [
+    path('', include('social_django.urls')),
     path('admin/', admin.site.urls),
     path(
         'about/',

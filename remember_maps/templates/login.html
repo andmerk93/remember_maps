@@ -17,8 +17,11 @@
           {% csrf_token %}
           {% include 'includes/make_form.html' %}
           <div class="col-md-6 offset-md-4">
-            <button type="submit" class="btn btn-primary">
-              Войти
+            <a href="/login/vk-oauth2" class="btn btn-outline-primary">
+              Войти через VK
+            </a>
+            <button type="submit" class="btn btn-outline-primary">
+              Войти по паролю
             </button>
           </div>
           </form>
