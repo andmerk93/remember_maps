@@ -14,7 +14,7 @@ SOCIAL_AUTH_VK_OAUTH2_SECRET = keys.SOCIAL_AUTH_VK_OAUTH2_SECRET
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
