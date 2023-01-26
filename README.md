@@ -34,42 +34,66 @@
 
 ## Установка на тестовом стенде:
 - клонировать репозиторий на машину, с которой будет будет запускаться сервис (либо по SSH-ссылке, либо скопировать и распаковать zip-архив)
->  ```git clone https://github.com/andmerk93/homework_bot.git```
+```
+git clone https://github.com/andmerk93/homework_bot.git
+```
 
 - На машине должен быть установлен Python актуальной версии (тестировалось на 3.8, 3.10)
 - развернуть виртуальное окружение python в папке с проектом (remember_maps)
->```python3 -m venv venv```
+```
+python3 -m venv venv
+```
 - активировать виртуальное окружение
-
-> ```source ./venv/bin/activate ``` (для linux/unix)
-> ```venv\Scripts\activate``` (для Windows, должно быть разрешено выполнение скриптов Powershell)
+(для linux/unix)
+ ```
+ source ./venv/bin/activate 
+ ``` 
+(для Windows, должно быть разрешено выполнение скриптов Powershell)
+ ```
+ venv\Scripts\activate
+ ``` 
 
 - с запущенным виртуальным окружением нужно выполнить установку требуемых компонентов
-> ```pip install -r requirements.txt```
+```
+pip install -r requirements.txt
+```
 - перейти в папку remember_maps/remember_maps  Дальнейшие команды будут выполняться отсюда
 - создать необходимые таблицы в базе данных (нет необходимости делать makemigrations, описания миграций добавлены в репозиторий)
->```python manage.py migrate```
+```
+python manage.py migrate
+```
 
 - собрать статические файлы для адекватной работы админской панели и Django Debug Tool
-> ```python manage.py collectstatic```
+ ```
+ python manage.py collectstatic
+ ```
 - Для теста панели администратора нужно создать пользователя с правами администратора и следовать инструкциям в консоли.
->```python manage.py createsuperuser```
+```
+python manage.py createsuperuser
+```
 - По умолчанию, для тестового стенда включен режим отладки. Если его требуется выключить, то в файле ```remember_maps/remember_maps/remember_maps/settings.py``` нужно заменить 17-ю строку на ```DEBUG = False```. В этом случае, Django Debug Tool будет недоступен
 - По умолчанию, требуемые компоненты Bootstrap и jQuery  подключаются с CDN  jsDelivr в шаблон base.html (в папке remember_maps/remember_maps/templates/). Можно сохранить их локально и подключить к проекту. Для этого нужно в base.html закомментировать 11 и 12 строки, раскомментировать 9 и 10. В папку remember_maps/static/ нужно скопировать jquery.min.js и bootstrap.min.css, взятые с официальных источников.
 Например, на linux для этого можно выполнить команды из папки ```static```
->``` wget https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css```
+``` 
+wget https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css
+```
 
-> ``` wget https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js```
+ ```
+  wget https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js
+  ```
 - Для работы проекта потребуются ключи API. В папке ```remember_maps/remember_maps/remember_maps``` нужно создать файл ```keys.py``` со следующим содержанием
-> SECRET_KEY = '' 
+```
+ SECRET_KEY = '' 
 
-> SOCIAL_AUTH_VK_OAUTH2_KEY = '' 
+ SOCIAL_AUTH_VK_OAUTH2_KEY = '' 
 
-> SOCIAL_AUTH_VK_OAUTH2_SECRET = '' 
-
+ SOCIAL_AUTH_VK_OAUTH2_SECRET = '' 
+```
  - Без этого файла проект не запустится и выдаст ошибку. Сами ключи при этом необязательно должны быть настоящими для тестового стенда, ошибок не должно быть. Первый ключ - это секретный ключ самого Джанго, второй и третий - параметры приложения VK, к которому привязывается авторизация. Если эти параметры не заполнить, то при нажатии кнопки "Войти через VK" браузер выдаст ошибку.
 - После выполнения всех подготовительных работ из папки remember_maps/remember_maps выполнить
-> ```python manage.py runserver```
+ ```
+ python manage.py runserver
+ ```
 
 Тестовый сервер должен запуститься, и быть доступен по http://127.0.0.1:8000/
 
